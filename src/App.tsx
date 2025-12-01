@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
-import Container from '@mui/material/Container';
-import Header from './components/Header';
-import LoginForm from './components/LoginForm';
-import { AuthContext } from './context/AuthContext';
-import { CategoryContext } from './context/CategoryContext';
-import { MoneyRecordContext } from './context/MoneyRecordContext';
-import UserDashboard from './components/UserDashboard';
+import { useContext, useEffect } from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import Container from "@mui/material/Container";
+import { Header } from "./common/Header";
+import { LoginForm } from "./auth/LoginForm";
+import { AuthContext } from "./auth/AuthContext";
+import { CategoryContext } from "./category/CategoryContext";
+import { MoneyRecordContext } from "./money/MoneyRecordContext";
+import { UserDashboard } from "./common/UserDashboard";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -26,9 +26,7 @@ function App() {
       <Header />
       <Container maxWidth="lg">
         {!user && <LoginForm />}
-        {user && (
-          <UserDashboard />
-        )}
+        {user && <UserDashboard />}
       </Container>
     </div>
   );

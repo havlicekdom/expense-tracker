@@ -1,19 +1,19 @@
-# AMPx
+# Expense Tracker
 ## Prerequisites
 
 * Node installed
-* Yarn package manager
+* PNPM package manager
 
 ## Getting started
 
 Firstly install all dependencies with following command in terminal of your choice:
 
 ```
-yarn
+pnpm install
 ```
 
 Then you can start the app locally with:
 
 ```
-yarn start
+pnpm start
 ```
