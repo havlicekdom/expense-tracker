@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
-import * as api from './api';
-import type { User } from '../types';
+import React, { useMemo, useState } from "react";
+import * as api from "./api";
+import type { User } from "../types";
 
 type LoginUserFunction = (email: string) => void;
 type LogoutUserFunction = () => void;
@@ -19,10 +19,14 @@ const initialState: InitialState = {
 
 const AuthContext = React.createContext(initialState);
 
-AuthContext.displayName = 'AuthContext';
+AuthContext.displayName = "AuthContext";
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(
+    localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user") as string)
+      : null
+  );
 
   const authContextValues = useMemo(() => {
     const loginUser: LoginUserFunction = (email) => {
@@ -31,6 +35,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const logoutUser: LogoutUserFunction = () => {
       setUser(null);
+      api.logoutUser();
     };
 
     return {
@@ -42,7 +47,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <AuthContext.Provider value={authContextValues}>
-      { children }
+      {children}
     </AuthContext.Provider>
   );
 }

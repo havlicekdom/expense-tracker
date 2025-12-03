@@ -13,5 +13,11 @@ export const loginUser = (email: string) => {
 
   if (!loggedInUser) throw new Error('User does not exist');
 
+  localStorage.setItem('user', JSON.stringify(loggedInUser));
+
   return loggedInUser;
+};
+
+export const logoutUser = () => {
+  localStorage.removeItem('user');
 };

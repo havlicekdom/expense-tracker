@@ -37,7 +37,7 @@ const schema = yup
       .number()
       .min(1, "You must enter positive, non-zero value")
       .required("Please enter the value"),
-    category: yup.number().required("Please select a category"),
+    category: yup.number().typeError("Please select a category").required("Please select a category"),
     date: yup.string().required("Please enter the date"),
     info: yup.string().required("Please enter the info"),
   })
@@ -64,6 +64,8 @@ export function MoneyRecordForm({
   });
 
   useEffect(() => {
+    // @ts-expect-error¨Unselected value needs to be empty string
+    setValue("category", '');
     if (moneyRecord) {
       (Object.keys(moneyRecord) as (keyof MoneyRecord)[]).forEach((key) => {
         setValue(key, moneyRecord[key]);

@@ -5,7 +5,7 @@ import { Category } from "../types";
 import { CategoryContext } from "./CategoryContext";
 import { CategoryForm } from "./CategoryForm";
 import { CategoryList } from "./CategoryList";
-import { AddEntityButton } from "../money/AddEntityButton";
+import { AddEntityButton } from "../common/AddEntityButton";
 
 export function CategoryDashboard() {
   const [open, setOpen] = useState(false);

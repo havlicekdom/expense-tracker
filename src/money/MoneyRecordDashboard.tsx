@@ -6,7 +6,7 @@ import { MoneyRecordContext } from "./MoneyRecordContext";
 import { MoneyRecord } from "../types";
 import { MoneyRecordForm } from "./MoneyRecordForm";
 import { MoneyRecordList } from "./MoneyRecordList";
-import { AddEntityButton } from "./AddEntityButton";
+import { AddEntityButton } from "../common/AddEntityButton";
 
 export function MoneyRecordDashboard() {
   const [open, setOpen] = useState(false);
